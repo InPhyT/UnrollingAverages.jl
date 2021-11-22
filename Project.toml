@@ -1,0 +1,7 @@
+name = "UnrollingAverages"
+uuid = "3f956635-a9f6-4086-ac4e-002c78554187"
+authors = ["Pietro Monticone", "Claudio Moroni"]
+version = "0.1.0"
+
+[compat]
+julia = "1.6"
