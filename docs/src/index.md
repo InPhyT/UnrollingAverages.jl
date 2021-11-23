@@ -4,24 +4,24 @@ CurrentModule = UnrollingAverages
 
 # UnrollingAverages
 
-Documentation for [UnrollingAverages](https://github.com/InPhyT/UnrollingAverages.jl).
-
 ```@contents
 ```
 
-UnrollingAverages.jl is a Julia package devoted to *reversing* (or *unrolling*) moving averages of time series, i.e. getting back the original time series.
+UnrollingAverages is a Julia package aimed at *reversing* (or *unrolling*) moving averages of time series to get the original ones back.
 
-UnrollingAverages.jl currently assumes that the moving average is a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average). Further relaxations and extensions may come in the future, see [Future improvements](#Future-improvements) section.
-
-Keep reading to zip through all you need to know!
+UnrollingAverages currently assumes that the moving average is a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average). Further relaxations and extensions may come in the future, see [Future Developments](#Future-Developments) section.
 
 ## Installation
 
-In a Julia REPL, enter `] add UnrollingAverages`.
+Press `]` in the Julia REPL and then
+
+```julia
+pkg> add UnrollingAverages
+```
 
 ## Documentation and Usage
 
-The package exports one function, `unroll`: it returns a `Vector` whose elements are the possible original time series.
+The package exports a single function `unroll`: it returns a `Vector` whose elements are the possible original time series.
 
 ```@docs
 unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_positive_integer::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }

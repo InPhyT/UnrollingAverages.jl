@@ -9,7 +9,7 @@ Retrive original time series (i.e. unroll) from its moving average `moving_avera
 - `initial_conditions::U = nothing`: the initial values of the original time series to be recovered. It may be a `Tuple` of `window-1` float or integer values, or `nothing` if initial conditions are unknown ;
 - `assert_positive_integer::Bool = false` default boolean argument. If true, then the pipeline will try to recover a time series of natural numbers only. More then one acceptable time series (where "acceptable" means that it reproduces `moving_average`) may be found and returned .
 
-NB: If ```isnothing(initial_conditions) && !assert_positive_integer``` , then only an approximate method may be used, see this [StackExchange post](https://stats.stackexchange.com/a/68002) .
+NB: If ```isnothing(initial_conditions) && !assert_positive_integer``` , then only an approximate method may be used, see this [StackExchange post](https://stats.stackexchange.com/a/68002).
 """
 function unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_positive_integer::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
 
@@ -30,9 +30,6 @@ function unroll(moving_average::Vector{Float64}, window::Int64; initial_conditio
     
 
 end
-
-
-
 
 
 """
@@ -68,8 +65,6 @@ function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n�
         collected_partitions = collect(partitions(minimum_window_total_cases))
     end
 
-
-
     # Get all permutations of partitions of such numerator. organize them as the column of a matrix.
     possibilities::Vector{Combinatorics.Permutations{Vector{Int64}}} = permutations.([pad!(partition,window) for partition in collected_partitions if length(partition) <= window ]) 
 
@@ -78,8 +73,6 @@ function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n�
 
     # Pre-compute the numerators of all the averages
     numerators::Vector{Int64} = round.(Ref(Int64),moving_average .* window)
-
-
 
     #l::Int64 = length(possibilities)
     # loop over possibilities, and store the ones that reproduce the moving average
@@ -91,7 +84,7 @@ function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n�
             valid::Bool = true
             # go forward
             for (i,numerator) in enumerate(@view(numerators[(minimum_index +1):end]))
-                diff::Int64 =  numerator  - sum( @view(possibility[(i+1):(i+1 + window -1 - 1)]) )
+                diff::Int64 = numerator - sum(@view(possibility[(i+1):(i+1 + window -1 - 1)]))
                 if diff < 0
                     valid = false
                     break
@@ -100,12 +93,10 @@ function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n�
                 end
             end
 
-
-
             # go backward
             if valid
                 for numerator in reverse(@view(numerators[1:(minimum_index - 1)]))
-                diff::Int64 = numerator - sum( @view(possibility[1:(window-1)]) )
+                diff::Int64 = numerator - sum( @view(possibility[1:(window-1)]))
                 if diff < 0
                     valid = false
                     break
@@ -124,14 +115,8 @@ function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n�
 
         end
     end
-
-
     # println("unroll_rolling_mean_of_natural_series_iterators. Returning...")
-
-
     # println("length(to_be_kept) = ", length(to_be_kept))
-
-    
     # return accepted possibilities
     return collect(to_be_kept)
 
@@ -160,11 +145,10 @@ Return the raw time series of which `moving_average` is the moving average, wher
 
 The methodology is as follow:
 1. Initialize `deaveraged = collect(initial)` ;
-2. for each `i ∈ eachindex(moving_average) `, set `deaveraged[i+window-1] = round(Int64,window*moving_average[i] - sum(@view(deaveraged[i:(i+window-1-1)]) ))` ;
+2. for each `i ∈ eachindex(moving_average) `, set `deaveraged[i+window-1] = round(Int64,window*moving_average[i] - sum(@view(deaveraged[i:(i+window-1-1)])))` ;
 3. Return `deaveraged` .
-
 """
-function unroll_recursive(moving_average::Vector{Float64}, window::Int64 , initial_conditions::Tuple{Vararg{Union{Int64,Float64}}} ) #NTuple{n₋+n₊,Int64} n₋::Int64, n₊::Int64
+function unroll_recursive(moving_average::Vector{Float64}, window::Int64 , initial_conditions::Tuple{Vararg{Union{Int64,Float64}}}) #NTuple{n₋+n₊,Int64} n₋::Int64, n₊::Int64
 
     # check that initial conditions are of the correct size
     if length(initial_conditions) != window - 1
@@ -173,21 +157,17 @@ function unroll_recursive(moving_average::Vector{Float64}, window::Int64 , initi
      # initialize raw time series using provided `initial_conditions`
     deaveraged::Vector{Union{Int64,Float64}} = collect(initial_conditions)
     # pre-resize `deaveraged` to accomodate all the reconstructed time series elements
-    resize!(deaveraged, length(initial_conditions) + length(moving_average)  )
+    resize!(deaveraged, length(initial_conditions) + length(moving_average))
 
     # loop over moving_average
     for i ∈ eachindex(moving_average) #in 1:(length(moving_average))
-        deaveraged[i+window-1] = round(Int64,window*moving_average[i] - sum(@view(deaveraged[i:(i+window-1-1)]) ))
+        deaveraged[i+window-1] = round(Int64,window*moving_average[i] - sum(@view(deaveraged[i:(i+window-1-1)])))
     end
 
     # return deaveraged time series
     return deaveraged
 
 end
-
-
-
-
 
 #######################################
 
