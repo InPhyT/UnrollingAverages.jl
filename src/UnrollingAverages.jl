@@ -1,5 +1,12 @@
 module UnrollingAverages
 
-# Write your package code here.
+export unroll
+
+using Combinatorics
+using LinearAlgebra
+using Statistics
+
+include("utilities.jl")
+include("NaturalSeriesUnrolling.jl")
 
 end
