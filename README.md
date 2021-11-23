@@ -16,7 +16,7 @@ Keep reading to zip through all you need to know!
 
 ## Installation
 
-In a Julia REPL, enter `] add Unrolling`.
+In a Julia REPL, enter `] add UnrollingAverages`.
 
 ## Documentation and Usage
 
