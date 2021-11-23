@@ -21,4 +21,5 @@ makedocs(;
 deploydocs(;
     repo="github.com/InPhyT/UnrollingAverages.jl",
     devbranch="main",
+    push_previews = true
 )
