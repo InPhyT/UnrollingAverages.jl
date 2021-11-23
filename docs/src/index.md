@@ -9,15 +9,15 @@ Documentation for [UnrollingAverages](https://github.com/InPhyT/UnrollingAverage
 ```@contents
 ```
 
-Unrolling.jl is a Julia package devoted to *reversing* (or *unrolling*) moving averages of time series, i.e. getting back the original time series.
+UnrollingAverages.jl is a Julia package devoted to *reversing* (or *unrolling*) moving averages of time series, i.e. getting back the original time series.
 
-Unrolling.jl currently assumes that the moving average is a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average). Further relaxations and extensions may come in the future, see [Future improvements](#Future-improvements) section.
+UnrollingAverages.jl currently assumes that the moving average is a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average). Further relaxations and extensions may come in the future, see [Future improvements](#Future-improvements) section.
 
 Keep reading to zip through all you need to know!
 
 ## Installation
 
-In a Julia REPL, enter `] add Unrolling`.
+In a Julia REPL, enter `] add UnrollingAverages`.
 
 ## Documentation and Usage
 
