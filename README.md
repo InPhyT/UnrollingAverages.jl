@@ -1,6 +1,6 @@
 # UnrollingAverages
 
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/InPhyT/Unrolling.jl/blob/main/LICENSE)
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/stable)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/dev)
