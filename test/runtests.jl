@@ -32,6 +32,4 @@ using Test
     
     end
 
-    n₊+n₋
-
 end

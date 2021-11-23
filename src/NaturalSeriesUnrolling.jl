@@ -156,7 +156,7 @@ end
 """
     unroll_recursive(moving_average::Vector{Float64}, window::Int64 , initial_conditions::Tuple{Vararg{Union{Int64,Float64}}} )
 
-Return the raw time series of which `moving_average` is the moving average, where moving_average[i] is the moving average of the [(i-n₋):(i+n₊)] slice of the raw time series to be returned. Assume the raw time series is composed of only natural numbers. 
+Return the raw time series of which `moving_average` is the moving average, where `moving_average[i]` is the moving average of the `[(i-n₋):(i+n₊)]` slice of the raw time series to be returned. Assume the raw time series is composed of only natural numbers. 
 
 The methodology is as follow:
 1. Initialize `deaveraged = collect(initial)` ;
