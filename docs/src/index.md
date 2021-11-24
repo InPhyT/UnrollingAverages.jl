@@ -32,7 +32,7 @@ A few remarks:
 1. If `isnothing(initial_conditions)`:
    - `if assert_positive_integer`, then an internal [`unroll_iterative`](@ref) method is called, which tries to exactly recover the whole time series, initial conditions included. Enter `?UnrollingAverages.unroll_iterative` in a julia  to read details ;
    - `if !assert_positive_integer`, then an internal [`unroll_linear_approximation`](@ref) method is called. See this [StackExchange post](https://stats.stackexchange.com/a/68002). NB: this is an approximated method, it will generally not return the exact original time series ;
-2. If `typeof(initial_conditions) <: Ntuple{window-1, <:Union{Int64,Float64}}`, then an internal [`unroll_recursive`](@ref) method is called, which exactly recovers the time series. Mathematical details about this function are reported in section [Brief explanation of `unroll_recursive` internal](@ref), and you may read more by entering `?UnrollingAverages.unroll_recursive`.
+2. If `typeof(initial_conditions) <: Ntuple{window-1, <:Union{Int64,Float64}}`, then an internal [`unroll_recursive`](@ref) method is called, which exactly recovers the time series. Mathematical details about this function are reported in section [How `unroll_recursive` works](@ref), and you may read more by entering `?UnrollingAverages.unroll_recursive`.
 
 ## How `unroll_recursive` works
 
