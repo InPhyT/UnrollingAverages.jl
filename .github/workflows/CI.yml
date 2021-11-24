@@ -19,11 +19,11 @@ jobs:
       matrix:
         version:
           - '1.6'
-          #- 'nightly'
+          - 'nightly'
         os:
           - ubuntu-latest
-          # - macOS-latest
-          # - windows-latest
+          - macOS-latest
+          - windows-latest
         arch:
           - x64
     steps:
@@ -49,9 +49,10 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: lcov.info
-      # - uses: julia-actions/julia-uploadcoveralls@v1
-      #   env:
-      #     COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+      - uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ github.token }}
+          path-to-lcov: lcov.info
   docs:
     name: Documentation
     runs-on: ubuntu-latest
