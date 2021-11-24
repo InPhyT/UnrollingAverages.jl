@@ -20,7 +20,7 @@ Press `]` in the Julia REPL and then
 pkg> add UnrollingAverages
 ```
 
-## Documentation and Usage
+## Usage
 
 The package exports a single function called `unroll`: it returns a `Vector` whose elements are the possible original time series.
 
@@ -38,12 +38,23 @@ unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = n
 A few remarks:
 
 1. If `isnothing(initial_conditions)`:
-   - `if assert_positive_integer`, then an internal `unroll_iterative` method is called, which tries to exactly recover the whole time series, initial conditions included. Enter `?UnrollingAverages.unroll_iterative` in a julia  to read details. ;
+   - `if assert_positive_integer`, then an internal `unroll_iterative` method is called, which tries to exactly recover the whole time series, initial conditions included. Enter `?UnrollingAverages.unroll_iterative` in a julia  to read details ;
    - `if !assert_positive_integer`, then an internal `unroll_linear_approximation` method is called. See this [StackExchange post](https://stats.stackexchange.com/a/68002). NB: this is an approximated method, it will generally not return the exact original time series ;
-2. If `typeof(initial_conditions) <: Ntuple{window-1, <:Union{Int64,Float64}}`, then an internal `unroll_recursive` method is called, which exactly recovers the time series. Mathematical details about this function are reported in the [docs](), and you may read more by entering `?UnrollingAverages.unroll_recursive`.
-
+2. If `typeof(initial_conditions) <: Ntuple{window-1, <:Union{Int64,Float64}}`, then an internal `unroll_recursive` method is called, which exactly recovers the time series. Mathematical details about this function are reported in the [docs](https://InPhyT.github.io/UnrollingAverages.jl/stable), and you may read more by entering `?UnrollingAverages.unroll_recursive`.
 
 ## Future Developments
 
 - Modify `initial_conditions` argument of `unroll` so that it accepts known values throughout the series ;
 - Implement reversing methods for other types of moving averages .
+
+## How to Contribute
+
+If you wish to change or add some functionality, please file an [issue](https://github.com/InPhyT/COVID19-Italy-Integrated-Surveillance-Data/issues). Some suggestions may be found in the [Future Developments](#Future-Developments) section.
+
+## How to Cite 
+
+If you use this data in your work, please cite this repository using the following metadata: 
+
+```
+.BIB FILE
+```
