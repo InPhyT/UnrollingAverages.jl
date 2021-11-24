@@ -55,6 +55,15 @@ If you wish to change or add some functionality, please file an [issue](https://
 
 If you use this data in your work, please cite this repository using the following metadata: 
 
-```
-.BIB FILE
+```bib
+@software{UnrollingAverages.jl,
+	author   = {Pietro Monticone, Claudio Moroni},
+	title    = {UnrollingAverages.jl},
+	url      = {},
+	doi      = {}, 
+	keywords = {Time Series, Statistics, Data Analysis},
+	version  = {v0.1.0},
+	year     = {2021},
+	month    = {11}
+}
 ```
