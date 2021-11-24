@@ -1,7 +1,7 @@
 name = "UnrollingAverages"
 uuid = "3f956635-a9f6-4086-ac4e-002c78554187"
 authors = ["Pietro Monticone", "Claudio Moroni"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
