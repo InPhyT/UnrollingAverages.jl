@@ -24,14 +24,14 @@ pkg> add pkg> add https://github.com/InPhyT/UnrollingAverages.jl
 The package exports a single function called `unroll`: it returns a `Vector` whose elements are the possible original time series.
 
 ```@docs
-unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_positive_integer::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
+unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_natural::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
 ```
 
 A few remarks:
 
 1. If `isnothing(initial_conditions)`:
-   - `if assert_positive_integer`, then an internal [`unroll_iterative`](@ref) method is called, which tries to exactly recover the whole time series, initial conditions included. Enter `?UnrollingAverages.unroll_iterative` in a julia  to read details ;
-   - `if !assert_positive_integer`, then an internal [`unroll_linear_approximation`](@ref) method is called. See this [StackExchange post](https://stats.stackexchange.com/a/68002). NB: this is an approximated method, it will generally not return the exact original time series ;
+   - `if assert_natural`, then an internal [`unroll_iterative`](@ref) method is called, which tries to exactly recover the whole time series, initial conditions included. Enter `?UnrollingAverages.unroll_iterative` in a julia  to read details ;
+   - `if !assert_natural`, then an internal [`unroll_linear_approximation`](@ref) method is called. See this [StackExchange post](https://stats.stackexchange.com/a/68002). NB: this is an approximated method, it will generally not return the exact original time series ;
 2. If `typeof(initial_conditions) <: Ntuple{window-1, <:Union{Int64,Float64}}`, then an internal [`unroll_recursive`](@ref) method is called, which exactly recovers the time series. Mathematical details about this function are reported in section [How `unroll_recursive` works](@ref), and you may read more by entering `?UnrollingAverages.unroll_recursive`.
 
 ## How `unroll_recursive` works
