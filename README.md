@@ -49,7 +49,7 @@ A few remarks:
 
 ## How to Contribute
 
-If you wish to change or add some functionality, please file an [issue](https://github.com/InPhyT/COVID19-Italy-Integrated-Surveillance-Data/issues). Some suggestions may be found in the [Future Developments](#Future-Developments) section.
+If you wish to change or add some functionality, please file an [issue](https://github.com/InPhyT/UnrollingAverages.jl/issues). Some suggestions may be found in the [Future Developments](#Future-Developments) section.
 
 ## How to Cite 
 
