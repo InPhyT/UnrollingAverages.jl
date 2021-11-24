@@ -36,14 +36,14 @@ A few remarks:
 
 ## How `unroll_recursive` works
 
-This method is capable of exactly recovering the original time series ``x_{t}`` (with ``t \in \mathbb{N}``), given its moving average ``a_t`` (with window width ``W = n_{-} + n_{+} + 1`` and ``t = 1,...,N−(m−1)``) and initial conditions `initial_conditions` (the latter must be a `NTuple{m-1,Union{Int64,Float64}}`):
+This method is capable of exactly recovering the original time series ``x_{t}`` (with ``t \in \mathbb{N}``), given its moving average ``a_t`` (with window width ``W = n_{-} + n_{+} + 1`` and ``t = 1,...,N−(W−1)``) and initial conditions `initial_conditions` (the latter must be a `NTuple{W-1,Union{Int64,Float64}}`):
 
 ```math
-a_t = \frac{1}{M}\sum_{j=t-n_-}^{t+n_+}x_j
+a_t = \frac{1}{W}\sum_{j=t-n_-}^{t+n_+}x_j
 ```
 
 By exploiting the derived recursive relation:
 
 ```math
-x_{t+n_+ + n_-} = Wa_t - \sum\limits_{j=1}^{t+n_-+n_+-1}x_j
+x_{t+n_+ + n_-} = W a_t - \sum\limits_{j=1}^{t+n_-+n_+-1}x_j
 ```
