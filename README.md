@@ -17,7 +17,7 @@ UnrollingAverages currently assumes that the moving average is a [simple moving 
 Press `]` in the Julia REPL and then
 
 ```julia
-pkg> add UnrollingAverages
+pkg> add https://github.com/InPhyT/UnrollingAverages.jl
 ```
 
 ## Usage
@@ -59,8 +59,8 @@ If you use this data in your work, please cite this repository using the followi
 @software{UnrollingAverages.jl,
 	author   = {Pietro Monticone, Claudio Moroni},
 	title    = {UnrollingAverages.jl},
-	url      = {},
-	doi      = {}, 
+	url      = {https://doi.org/10.5281/zenodo.5725302},
+	doi      = {10.5281/zenodo.5725302}, 
 	keywords = {Time Series, Statistics, Data Analysis},
 	version  = {v0.1.0},
 	year     = {2021},
