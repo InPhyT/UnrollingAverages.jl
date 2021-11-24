@@ -5,7 +5,7 @@
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/dev)
 [![Build Status](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![codecov](https://codecov.io/gh/InPhyT/UnrollingAverages.jl/branch/main/graph/badge.svg?token=7KMQ2RN9GD)](https://codecov.io/gh/InPhyT/UnrollingAverages.jl)
-[![Coverage](https://coveralls.io/repos/github/InPhyT/UnrollingAverages.jl/badge.svg?branch=main)](https://coveralls.io/github/InPhyT/UnrollingAverages.jl?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/InPhyT/UnrollingAverages.jl/badge.svg)](https://coveralls.io/github/InPhyT/UnrollingAverages.jl)
 [![DOI](https://zenodo.org/badge/430885253.svg)](https://zenodo.org/badge/latestdoi/430885253)
 
 UnrollingAverages is a Julia package aimed at *reversing* (or *unrolling*) moving averages of time series to get the original ones back.
