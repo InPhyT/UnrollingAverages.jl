@@ -17,7 +17,7 @@ UnrollingAverages currently assumes that the moving average is a [simple moving 
 Press `]` in the Julia REPL and then
 
 ```julia
-pkg> add https://github.com/InPhyT/UnrollingAverages.jl
+pkg> add UnrollingAverages
 ```
 
 ## Usage
