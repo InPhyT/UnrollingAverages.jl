@@ -56,14 +56,16 @@ If you wish to change or add some functionality, please file an [issue](https://
 If you use this data in your work, please cite this repository using the following metadata: 
 
 ```bib
-@software{UnrollingAverages.jl,
-	author   = {Pietro Monticone, Claudio Moroni},
-	title    = {UnrollingAverages.jl},
-	url      = {https://doi.org/10.5281/zenodo.5725302},
-	doi      = {10.5281/zenodo.5725302}, 
-	keywords = {Time Series, Statistics, Data Analysis},
-	version  = {v0.1.0},
-	year     = {2021},
-	month    = {11}
-}
+@software{Monticone_Moroni_UnrollingAverages_2021,
+         abstract     = {A Julia package to reverse ("unroll") moving averages of time series to get the original ones back.},
+         author       = {Monticone, Pietro and Moroni, Claudio},
+         doi          = {10.5281/zenodo.5725301},
+		 institution  = {University of Turin (UniTO)},
+         keywords     = {Julia Language, Time Series, Statistics, Data Science, Data Analysis, Reverse Engineering},
+         license      = {MIT},
+         organization = {Interdisciplinary Physics Team (InPhyT)},
+         title        = {UnrollingAverages.jl},
+         url          = {https://doi.org/10.5281/zenodo.5725301},
+         year         = {2021}
+         }
 ```
