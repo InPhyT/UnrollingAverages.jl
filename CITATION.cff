@@ -1,6 +1,3 @@
-# This CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to generate yours today!
-
 cff-version: 1.2.0
 title: UnrollingAverages.jl
 message: >-
@@ -31,7 +28,7 @@ identifiers:
       https://github.com/InPhyT/UnrollingAverages.jl/releases/tag/v0.2.0
     description: The GitHub release URL of tag v0.2.0.
 repository-code: 'https://github.com/InPhyT/UnrollingAverages.jl'
-url: 'https://inphyt.github.io/UnrollingAverages.jl/dev/'
+url: 'https://inphyt.github.io/UnrollingAverages.jl/stable/'
 repository: 'https://doi.org/10.5281/zenodo.5725301'
 abstract: >-
   A Julia package to reverse ("unroll") moving
@@ -42,8 +39,8 @@ keywords:
   - Time Series
   - Statistics
   - Data Science
-  - 'Data Analysis '
-  - 'Reverse Engineering '
+  - Data Analysis
+  - Reverse Engineering
 license: MIT
 version: 0.2.0
 date-released: '2021-11-27'
