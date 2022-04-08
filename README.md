@@ -53,7 +53,7 @@ If you wish to change or add some functionality, please file an [issue](https://
 
 ## How to Cite 
 
-If you use this data in your work, please cite this repository using the following metadata: 
+If you use this package in your work, please cite this repository using the following metadata: 
 
 ```bib
 @software{Monticone_Moroni_UnrollingAverages_2021,
