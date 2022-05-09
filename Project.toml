@@ -1,6 +1,6 @@
 name = "UnrollingAverages"
 uuid = "3f956635-a9f6-4086-ac4e-002c78554187"
-authors = ["Pietro Monticone", "Claudio Moroni"]
+authors = ["Pietro Monticone <38562595+pitmonticone@users.noreply.github.com>", "Claudio Moroni <43729990+ClaudMor@users.noreply.github.com>"]
 version = "0.2.0"
 
 [deps]
