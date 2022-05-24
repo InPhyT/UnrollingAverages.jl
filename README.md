@@ -1,4 +1,4 @@
-# UnrollingAverages
+# <img src="https://github.com/InPhyT/UnrollingAverages.jl/blob/main/docs/src/assets/logo.png?raw=true" width="50" height="50"> &nbsp; UnrollingAverages.jl 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/InPhyT/UnrollingAverages.jl/blob/main/LICENSE)
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/stable)
