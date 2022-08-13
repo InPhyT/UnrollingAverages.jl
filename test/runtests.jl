@@ -2,14 +2,13 @@ using UnrollingAverages
 using Statistics
 using Test
 
-
 @testset "UnrollingAverages.jl" begin
 
-    # params
+    # Parameters
     n₋ = 2
     n₊ = 4
 
-    # test series
+    # Test time series 
     for i in 1:10
         original_time_series        = [rand(0:9) for i in 1:500]
         original_time_series_with_0 = vcat(repeat([0],n₋+n₊),[rand(0:9) for i in 1:500])
@@ -33,11 +32,6 @@ using Test
         @test original_time_series_with_0 ∈ unroll(averaged_time_series_with_0, n₋ + n₊ + 1;  assert_natural = true)
         # test internal `moving_average(time_series::Union{Vector{Float64},Vector{Int64}},window::Int64)`
         @test UnrollingAverages.moving_average(unroll(averaged_time_series, n₋ + n₊ + 1 )[1] , n₋ + n₊ +1 ) ≈ averaged_time_series
-
         #@time unroll(averaged_time_series, n₋ + n₊ + 1;  assert_natural = true)
-
-        
-    
     end
-
 end

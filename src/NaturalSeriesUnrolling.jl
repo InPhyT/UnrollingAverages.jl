@@ -2,18 +2,17 @@
 """
     unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_natural::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
 
-Retrive original time series (i.e. unroll) from its moving average `moving_average`. 
+Retrieve original time series (i.e. unroll) from its moving average `moving_average`. 
 # Arguments
-- `moving_average::Vector{Float64}`: the time series representing the moving average to unroll ;
-- `window:::Int64`: the width of the moving average ;
-- `initial_conditions::U = nothing`: the initial values of the original time series to be recovered. It may be a `Tuple` of `window-1` float or integer values, or `nothing` if initial conditions are unknown ;
-- `assert_natural::Bool = false` default boolean argument. If true, then the pipeline will try to recover a time series of natural numbers only. More then one acceptable time series (where "acceptable" means that it reproduces `moving_average`) may be found and returned .
+- `moving_average::Vector{Float64}`: the time series representing the moving average to unroll;
+- `window:::Int64`: the width of the moving average;
+- `initial_conditions::U = nothing`: the initial values of the original time series to be recovered. It may be a `Tuple` of `window-1` float or integer values, or `nothing` if initial conditions are unknown;
+- `assert_natural::Bool = false` default boolean argument. If true, then the pipeline will try to recover a time series of natural numbers only. More then one acceptable time series (where "acceptable" means that it reproduces `moving_average`) may be found and returned.
 
 NB: If ```isnothing(initial_conditions) && !assert_natural``` , then only an approximate method may be used, see this [StackExchange post](https://stats.stackexchange.com/a/68002).
 """
 function unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_natural::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
-
-
+    
     reconstructed_time_series = assert_natural ? Vector{Int64}[] : Vector{Float64}[]
 
     if isnothing(initial_conditions)
@@ -27,8 +26,6 @@ function unroll(moving_average::Vector{Float64}, window::Int64; initial_conditio
     else
         error("`initial_conditions` type must be either Nothing or a NTuple{window-1,Union{Float64,Int64}}")
     end
-    
-
 end
 
 
@@ -38,9 +35,9 @@ end
 Unroll `moving_average` (interpreting it as a moving average whose window width is `window`), returning the original time series assuming it is composed of only natural numbers.
 
 The methodology is as follows:
-1. Consider the minimum of `moving_average`, that we will name `minimum_average` ;
-2. Produce all possible sets of `n₋ + n₊ + 1` naturals that could have `minimum_average` as mean. This is perfomed by obtaining all permutations of all the partititions of `minimum_average*(n₋ + n₊ + 1)` via Combinatorics.jl, and we will refer to each of the resulting array as a "possibility". These are irganized in an array of iterators `possibilities`;
-3. For each for each `possibility` and for each `element` in `moving_average[(minimum_index +1):end]` compute the natural `x` (zero included) to be pushed to `possibility`'s end so that `sum(possibility[(i+1):(i+1 + n₋ + n₊ - 1)]) == minimum_average*(n₋ + n₊ + 1)`. if there is such `x`, push it to the `possibility`'s end and go to the next possibility, else remove the `possibility`. When this loop finishes, perform the same loops backward for each `element in reverse(moving_average[1:(minimum_index - 1)])`, this time pushing the `x`s to the `possibility`'s top. This allows for obtaining the set of all possible time series ;
+1. Consider the minimum of `moving_average`, that we will name `minimum_average`;
+2. Produce all possible sets of `n₋ + n₊ + 1` naturals that could have `minimum_average` as mean. This is performed by obtaining all permutations of all the partitions of `minimum_average*(n₋ + n₊ + 1)` via Combinatorics.jl, and we will refer to each of the resulting array as a "possibility". These are organized in an array of iterators `possibilities`;
+3. For each for each `possibility` and for each `element` in `moving_average[(minimum_index +1):end]` compute the natural `x` (zero included) to be pushed to `possibility`'s end so that `sum(possibility[(i+1):(i+1 + n₋ + n₊ - 1)]) == minimum_average*(n₋ + n₊ + 1)`. if there is such `x`, push it to the `possibility`'s end and go to the next possibility, else remove the `possibility`. When this loop finishes, perform the same loops backward for each `element in reverse(moving_average[1:(minimum_index - 1)])`, this time pushing the `x`s to the `possibility`'s top. This allows for obtaining the set of all possible time series;
 4. Return the remaining possibilities.
 """
 function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n₋::Int64, n₊::Int64, window = n₋ + n₊ + 1
@@ -55,7 +52,6 @@ function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n�
     minimum_window_total_cases::Int64 = round(Int64,moving_average[minimum_index] * window) #n₋ + n₊ + 1
     #println("minimum_window_total_cases = ", minimum_window_total_cases) 
 
-    
     # if minimum_window_total_cases == 0, set collected_partitions manually since Combinatorics would return an "undefined reference"
     collected_partitions = Vector{Int64}[]
     if minimum_window_total_cases == 0
@@ -108,18 +104,13 @@ function unroll_iterative(moving_average::Vector{Float64}, window::Int64) #  n�
             if valid
                 push!(to_be_kept,possibility)
             end
-
         end
-
-
-
         end
     end
     # println("unroll_rolling_mean_of_natural_series_iterators. Returning...")
     # println("length(to_be_kept) = ", length(to_be_kept))
     # return accepted possibilities
     return collect(to_be_kept)
-
 end
 
 """
@@ -186,7 +177,7 @@ end
     
 #     # compute the numeratir of the frst average
 #     # first_window_total_cases::Int64 = round(Int64,moving_average[1] * (n₋ + n₊ + 1 ))
-#     # if first_window_total_cases == 0, set collected_partitions manually since Combinatorics would return a "indefined reference"
+#     # if first_window_total_cases == 0, set collected_partitions manually since Combinatorics would return a "undefined reference"
 #     #println("first_window_total_cases  = $first_window_total_cases ")
 #     collected_partitions = Int64[]
 #     if minimum_window_total_cases == 0
@@ -246,29 +237,16 @@ end
 
 #         end
 
-
-
 #         end
 #     end
 
-
 #     println("unroll_rolling_mean_of_natural_series_iterators. Returning...")
-
 
 #     # end
 
 #     println("length(to_be_kept) = ", length(to_be_kept))
-
 #     # For every initial conditions, which are all slices `possibility[1:(n₋ + n₊)]` for the remaining possibilities, apply `deaverage(moving_average, n₋, n₊, Tuple(possibility[1:(n₋ + n₊ )])  )` and keep the resulting reconstructed raw series iff it contains no negative numbers. Return all possible reconstructed time series, togheter with a linear approximation.
 #     #return [pred_poss for pred_poss in deaverage.(Ref(moving_average), Ref(n₋), Ref(n₊), Tuple.(collect(to_be_kept))  ) if all(pred_poss .>= 0)] , linear_approximation
-
 #     return collect(to_be_kept), linear_approximation
-
 # end
-
-
 ###############################################################################
-
-
-
-
