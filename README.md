@@ -71,3 +71,9 @@ If you use this package in your work, please cite this repository using the foll
          year         = {2021}
          }
 ```
+
+## Announcements 
+
+- [Twitter](https://twitter.com/In_Phy_T/status/1461358804730204168?s=20&t=OzJAPLw6gd2WsGjiqlYeWA)
+- [Discourse](https://discourse.julialang.org/t/ann-unrollingaverages-jl-a-package-to-deconvolve-time-series-data/81684)
+- [Forem](https://forem.julialang.org/inphyt/ann-unrollingaveragesjl-a-package-to-deconvolve-time-series-data-5bbp)
