@@ -1,7 +1,9 @@
 using UnrollingAverages
 using Documenter
 
-DocMeta.setdocmeta!(UnrollingAverages, :DocTestSetup, :(using UnrollingAverages); recursive=true)
+DocMeta.setdocmeta!(
+    UnrollingAverages, :DocTestSetup, :(using UnrollingAverages); recursive=true
+)
 
 makedocs(;
     modules=[UnrollingAverages],
@@ -13,14 +15,9 @@ makedocs(;
         canonical="https://InPhyT.github.io/UnrollingAverages.jl",
         assets=String[],
     ),
-    pages=[
-        "Home" => "index.md",
-        "Internals" => "internals.md"
-    ],
+    pages=["Home" => "index.md", "Internals" => "internals.md"],
 )
 
 deploydocs(;
-    repo="github.com/InPhyT/UnrollingAverages.jl",
-    devbranch="main",
-    push_preview = true
+    repo="github.com/InPhyT/UnrollingAverages.jl", devbranch="main", push_preview=true
 )
