@@ -2,8 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/InPhyT/UnrollingAverages.jl/blob/main/LICENSE)
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/stable)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/dev)
-[![Build Status](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Dev](https://img.shields.io/badge/docs-dev-lightblue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/dev)
+[![CI](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml)
+[![Compat Helper](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CompatHelper.yml/badge.svg)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CompatHelper.yml)
+[![Format Check](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/FormatCheck.yml/badge.svg)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/FormatCheck.yml)
 [![codecov](https://codecov.io/gh/InPhyT/UnrollingAverages.jl/branch/main/graph/badge.svg?token=7KMQ2RN9GD)](https://codecov.io/gh/InPhyT/UnrollingAverages.jl)
 [![Coverage Status](https://coveralls.io/repos/github/InPhyT/UnrollingAverages.jl/badge.svg)](https://coveralls.io/github/InPhyT/UnrollingAverages.jl)
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
@@ -56,22 +58,7 @@ If you wish to change or add some functionality, please file an [issue](https://
 
 ## How to Cite 
 
-If you use this package in your work, please cite this repository using the following metadata: 
-
-```bib
-@software{Monticone_Moroni_UnrollingAverages_2021,
-         abstract     = {A Julia package to reverse ("unroll") moving averages of time series to get the original ones back.},
-         author       = {Monticone, Pietro and Moroni, Claudio},
-         doi          = {10.5281/zenodo.5725301},
-         institution  = {University of Turin (UniTO)},
-         keywords     = {Julia Language, Time Series, Statistics, Data Science, Data Analysis, Reverse Engineering},
-         license      = {MIT},
-         organization = {Interdisciplinary Physics Team (InPhyT)},
-         title        = {UnrollingAverages.jl},
-         url          = {https://doi.org/10.5281/zenodo.5725301},
-         year         = {2021}
-         }
-```
+If you use this package in your work, please cite this repository using the metadata in [`CITATION.bib`](https://github.com/InPhyT/UnrollingAverages.jl/blob/main/CITATION.bib).
 
 ## Announcements 
 
