@@ -15,7 +15,7 @@ makedocs(;
         canonical="https://InPhyT.github.io/UnrollingAverages.jl",
         assets=String[],
     ),
-    pages=["Home" => "index.md", "Internals" => "internals.md"],
+    pages=["Home" => "index.md", "API" => "API.md"],
 )
 
 deploydocs(;

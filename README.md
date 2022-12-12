@@ -1,19 +1,19 @@
 # UnrollingAverages.jl 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/InPhyT/UnrollingAverages.jl/blob/main/LICENSE)
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/stable)
-[![Dev](https://img.shields.io/badge/docs-dev-lightblue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/dev)
+[![Docs: Stable](https://img.shields.io/badge/Docs-Stable-blue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/stable)
+[![Docs: Dev](https://img.shields.io/badge/Docs-Dev-lightblue.svg)](https://InPhyT.github.io/UnrollingAverages.jl/dev)
 [![CI](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CI.yml)
 [![Compat Helper](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CompatHelper.yml/badge.svg)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/CompatHelper.yml)
 [![Format Check](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/FormatCheck.yml/badge.svg)](https://github.com/InPhyT/UnrollingAverages.jl/actions/workflows/FormatCheck.yml)
-[![codecov](https://codecov.io/gh/InPhyT/UnrollingAverages.jl/branch/main/graph/badge.svg?token=7KMQ2RN9GD)](https://codecov.io/gh/InPhyT/UnrollingAverages.jl)
-[![Coverage Status](https://coveralls.io/repos/github/InPhyT/UnrollingAverages.jl/badge.svg)](https://coveralls.io/github/InPhyT/UnrollingAverages.jl)
+[![Coverage: Codecov](https://codecov.io/gh/InPhyT/UnrollingAverages.jl/branch/main/graph/badge.svg?token=7KMQ2RN9GD)](https://codecov.io/gh/InPhyT/UnrollingAverages.jl)
+[![Coverage: Coveralls](https://coveralls.io/repos/github/InPhyT/UnrollingAverages.jl/badge.svg)](https://coveralls.io/github/InPhyT/UnrollingAverages.jl)
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 [![DOI](https://zenodo.org/badge/430885253.svg)](https://zenodo.org/badge/latestdoi/430885253)
 
-<img align="right" width="190" height="190" src="https://github.com/InPhyT/UnrollingAverages.jl/blob/main/docs/src/assets/logo.png?raw=true">
+<img align="right" width="200" height="200" src="https://github.com/InPhyT/UnrollingAverages.jl/blob/main/docs/src/assets/logo.png?raw=true">
 
-UnrollingAverages is a Julia package aimed at *reversing* (or *unrolling*) moving averages of time series to get the original ones back.
+UnrollingAverages is a Julia package aimed at *deconvolving* (or *unrolling*) moving averages of time series to get the original ones back.
 
 UnrollingAverages currently assumes that the moving average is a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average). Further relaxations and extensions may come in the future, see [Future Developments](#Future-Developments) section.
 
@@ -21,7 +21,7 @@ UnrollingAverages currently assumes that the moving average is a [simple moving 
 
 Press `]` in the Julia REPL and then
 
-```julia
+```nothing
 pkg> add UnrollingAverages
 ```
 
@@ -30,7 +30,11 @@ pkg> add UnrollingAverages
 The package exports a single function called `unroll`: it returns a `Vector` whose elements are the possible original time series.
 
 ```julia
-unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_natural::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
+unroll( moving_average::Vector{Float64},
+        window::Int64;
+        initial_conditions::U=nothing,
+        assert_natural::Bool=false
+      ) where {U<:Union{Tuple{Vararg{Union{Int64,Float64}}},Nothing}}
 ```
 
 ### Arguments
@@ -49,7 +53,7 @@ A few remarks:
 
 ## Future Developments
 
-- Modify `initial_conditions` argument of `unroll` so that it accepts known values throughout the series ;
+- Modify `initial_conditions` argument of `unroll` so that it accepts known values throughout the series;
 - Implement reversing methods for other types of moving averages .
 
 ## How to Contribute

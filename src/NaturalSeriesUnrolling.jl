@@ -1,6 +1,11 @@
 
 """
-    unroll(moving_average::Vector{Float64}, window::Int64; initial_conditions::U = nothing, assert_natural::Bool = false) where { U <: Union{ Tuple{Vararg{Union{Int64,Float64}}},Nothing} }
+    function unroll(
+        moving_average::Vector{Float64},
+        window::Int64;
+        initial_conditions::U=nothing,
+        assert_natural::Bool=false,
+    ) where {U<:Union{Tuple{Vararg{Union{Int64,Float64}}},Nothing}}
 
 Retrieve original time series (i.e. unroll) from its moving average `moving_average`. 
 # Arguments
@@ -135,7 +140,6 @@ end
 Compute the linear approximation of the time series whose moving average of window `window` is `moving_average`. For details, please refer to https://stats.stackexchange.com/a/68002 .
 """
 function unroll_linear_approximation(moving_average::Vector{Float64}, window::Int64)
-
     # compute linear approximation
     mean_vec::Vector{Float64} = repeat([1 / window], window)
     mean_mat::Matrix{Float64} =
@@ -146,7 +150,6 @@ function unroll_linear_approximation(moving_average::Vector{Float64}, window::In
             ]...,
         )'
     linear_approximation::Vector{Float64} = pinv(mean_mat) * moving_average # equivalently, mean_mat \ moving_average
-
     return linear_approximation
 end
 
@@ -165,7 +168,6 @@ function unroll_recursive(
     window::Int64,
     initial_conditions::Tuple{Vararg{Union{Int64,Float64}}},
 ) #NTuple{n₋+n₊,Int64} n₋::Int64, n₊::Int64
-
     # check that initial conditions are of the correct size
     if length(initial_conditions) != window - 1
         error("initial_conditions must have length equal to (window-1) = ", window - 1)
@@ -174,7 +176,6 @@ function unroll_recursive(
     deaveraged::Vector{Union{Int64,Float64}} = collect(initial_conditions)
     # pre-resize `deaveraged` to accomodate all the reconstructed time series elements
     resize!(deaveraged, length(initial_conditions) + length(moving_average))
-
     # loop over moving_average
     for i in eachindex(moving_average) #in 1:(length(moving_average))
         deaveraged[i + window - 1] = round(
@@ -182,7 +183,6 @@ function unroll_recursive(
             window * moving_average[i] - sum(@view(deaveraged[i:(i + window - 1 - 1)])),
         )
     end
-
     # return deaveraged time series
     return deaveraged
 end

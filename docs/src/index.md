@@ -25,7 +25,7 @@ UnrollingAverages currently assumes that the moving average is a [simple moving 
 
 Press `]` in the Julia REPL and then
 
-```julia
+```nothing
 pkg> add UnrollingAverages
 ```
 

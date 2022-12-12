@@ -3,16 +3,13 @@ using Statistics
 using Test
 
 @testset "UnrollingAverages.jl" begin
-
     # Parameters
     n₋ = 2
     n₊ = 4
-
     # Test time series 
     for i in 1:10
         original_time_series = [rand(0:9) for i in 1:500]
         original_time_series_with_0 = vcat(repeat([0], n₋ + n₊), [rand(0:9) for i in 1:500])
-
         averaged_time_series = [
             mean(original_time_series[(i - n₋):(i + n₊)]) for
             i in (1 + n₋):(length(original_time_series) - n₊)
@@ -21,7 +18,6 @@ using Test
             mean(original_time_series_with_0[(i - n₋):(i + n₊)]) for
             i in (1 + n₋):(length(original_time_series_with_0) - n₊)
         ]
-
         # test unroll_recursive
         @test unroll(
             averaged_time_series,
@@ -34,7 +30,7 @@ using Test
             n₋ + n₊ + 1;
             initial_conditions=Tuple(original_time_series[1:(n₋ + n₊)]),
         )[1] == original_time_series
-        ## test that unroll_recursive errors when initial conditions are of wrong length
+        # test that unroll_recursive errors when initial conditions are of wrong length
         @test_throws ErrorException unroll(
             averaged_time_series,
             n₋ + n₊ + 1;
