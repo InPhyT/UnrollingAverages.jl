@@ -31,15 +31,14 @@ pkg> add UnrollingAverages
 
 ## Usage
 
-The package exports a single function called `unroll`: it returns a `Vector` whose elements are the possible original time series.
+The package exports a single function called [`unroll`](@ref): it returns a `Vector` whose elements are the possible original time series.
 
-```@docs
-function unroll(
-    moving_average::Vector{Float64},
-    window::Int64;
-    initial_conditions::U=nothing,
-    assert_natural::Bool=false,
-) where {U<:Union{Tuple{Vararg{Union{Int64,Float64}}},Nothing}}
+```julia
+unroll( moving_average::Vector{Float64},
+        window::Int64;
+        initial_conditions::U=nothing,
+        assert_natural::Bool=false
+      ) where {U<:Union{Tuple{Vararg{Union{Int64,Float64}}},Nothing}}
 ```
 
 A few remarks:

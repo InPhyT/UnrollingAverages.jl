@@ -1,6 +1,6 @@
 
 """
-    function unroll(
+    unroll(
         moving_average::Vector{Float64},
         window::Int64;
         initial_conditions::U=nothing,
