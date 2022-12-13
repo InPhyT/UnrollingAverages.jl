@@ -23,7 +23,6 @@ function unroll(
     assert_natural::Bool=false,
 ) where {U<:Union{Tuple{Vararg{Union{Int64,Float64}}},Nothing}}
     reconstructed_time_series = assert_natural ? Vector{Int64}[] : Vector{Float64}[]
-
     if isnothing(initial_conditions)
         if assert_natural
             reconstructed_time_series = unroll_iterative(moving_average, window)
